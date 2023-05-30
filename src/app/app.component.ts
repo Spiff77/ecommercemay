@@ -19,9 +19,13 @@ export class AppComponent {
     price: 10
   }
 
-  myColor='green'
+  myColor='red'
 
   toggleActive() {
     this.myProduct.active = !this.myProduct.active
+  }
+
+  changeColor(event: Event) {
+      this.myColor = (event.target as HTMLSelectElement).value
   }
 }

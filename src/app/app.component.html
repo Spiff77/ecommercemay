@@ -6,7 +6,7 @@
   <li>Active: {{myProduct.active}}</li>
 </ul>
 
-<select name="color" id="color" [(ngModel)]="myColor">
+<select name="color" id="color" (change)="changeColor($event)" [value]="myColor">
   <option value="red">Rouge</option>
   <option value="green">Green</option>
   <option value="blue">Blue</option>
