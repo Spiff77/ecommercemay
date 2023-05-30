@@ -1,8 +1,14 @@
 <h1>Affichage du produit: {{myProduct.name}}</h1>
-<ul>
+<ul [style.color]="myColor">
   <li>ID: {{myProduct.id}}</li>
   <li>Name: {{myProduct.name}}</li>
   <li>Description: {{myProduct.description}}</li>
   <li>Active: {{myProduct.active}}</li>
 </ul>
+
+<select name="color" id="color" [(ngModel)]="myColor">
+  <option value="red">Rouge</option>
+  <option value="green">Green</option>
+  <option value="blue">Blue</option>
+</select>
 <button (click)="toggleActive()">Toggle</button>

@@ -19,6 +19,8 @@ export class AppComponent {
     price: 10
   }
 
+  myColor='green'
+
   toggleActive() {
     this.myProduct.active = !this.myProduct.active
   }
