@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
 import {Product} from '../model/product.model';
 
 @Component({
@@ -8,28 +8,44 @@ import {Product} from '../model/product.model';
 })
 export class ProductListComponent {
 
-  selectedProduct: Product | undefined
+  constructor() {
+    console.log("Constructor")
+  }
 
-  product1: Product = {
-    id: 20,
-    name: '1984',
-    description: 'un livre qu\'il est bien pour le lire',
-    price: 10,
-    promo: .3,
-    active: true,
-    category: 'Book',
-  }
-  product2: Product = {
-    id: 20,
-    name: 'Frank Zappa',
-    description: 'un CD qu\'il est bien pour l\'écouter',
-    price: 10,
-    promo: .3,
-    active: true,
-    category: 'CD',
-  }
+  selectedProduct: Product | undefined
+  filterStr = '';
+
+  products: Product[] = [
+    {
+      id: 20,
+      name: '1984',
+      description: 'un livre qu\'il est bien pour le lire',
+      price: 10,
+      promo: .3,
+      active: true,
+      category: 'Book',
+    }, {
+      id: 20,
+      name: 'Frank Zappa',
+      description: 'un CD qu\'il est bien pour l\'écouter',
+      price: 10,
+      promo: .3,
+      active: true,
+      category: 'CD',
+    }
+  ]
+
   receiveDataFromChild(p: Product){
     this.selectedProduct = p
+  }
+
+  setFilterStr(evt: Event) {
+    this.filterStr = (evt.target as HTMLInputElement).value;
+    console.log(this.filterStr)
+  }
+
+  getProductsFiltered(): Product[] {
+    return this.products.filter(p => p.name.toLowerCase().includes(this.filterStr.toLowerCase()))
   }
 
 }

@@ -1,4 +1,5 @@
 <h2>Products List</h2>
-<div [hidden]="!selectedProduct"> <span (click)="selectedProduct = undefined">[X]</span> Vous avez selectionné: {{selectedProduct?.name}} ({{selectedProduct?.category}})</div>
-<app-product (evtEmit)="receiveDataFromChild($event)" [product]="product1"></app-product>
-<app-product (evtEmit)="receiveDataFromChild($event)" [product]="product2"></app-product>
+<input type="text" (input)="setFilterStr($event)">
+<div *ngIf="selectedProduct"> <span (click)="selectedProduct = undefined">[X]</span> Vous avez selectionné: {{selectedProduct?.name}} ({{selectedProduct?.category}})</div>
+<div *ngIf="getProductsFiltered().length == 0">La liste est vide</div>
+<app-product *ngFor="let prod of getProductsFiltered()" (evtEmit)="receiveDataFromChild($event)" [product]="prod"></app-product>
