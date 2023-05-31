@@ -1,39 +1,24 @@
 import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
 import {Product} from '../model/product.model';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
-
-  constructor() {
-    console.log("Constructor")
-  }
+export class ProductListComponent implements OnInit{
 
   selectedProduct: Product | undefined
   filterStr = '';
 
-  products: Product[] = [
-    {
-      id: 20,
-      name: '1984',
-      description: 'un livre qu\'il est bien pour le lire',
-      price: 10,
-      promo: .3,
-      active: true,
-      category: 'Book',
-    }, {
-      id: 20,
-      name: 'Frank Zappa',
-      description: 'un CD qu\'il est bien pour l\'écouter',
-      price: 10,
-      promo: .3,
-      active: true,
-      category: 'CD',
-    }
-  ]
+  products: Product[] = []
+
+  constructor(private ps: ProductService) {}
+
+  ngOnInit(): void {
+    this.products = this.ps.findAll()
+  }
 
   receiveDataFromChild(p: Product){
     this.selectedProduct = p
@@ -47,5 +32,6 @@ export class ProductListComponent {
   getProductsFiltered(): Product[] {
     return this.products.filter(p => p.name.toLowerCase().includes(this.filterStr.toLowerCase()))
   }
+
 
 }
