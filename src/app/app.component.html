@@ -1,14 +1,3 @@
-<h1>Affichage du produit: {{myProduct.name}}</h1>
-<ul [style.color]="myColor">
-  <li>ID: {{myProduct.id}}</li>
-  <li>Name: {{myProduct.name}}</li>
-  <li>Description: {{myProduct.description}}</li>
-  <li>Active: {{myProduct.active}}</li>
-</ul>
-
-<select name="color" id="color" (change)="changeColor($event)" [value]="myColor">
-  <option value="red">Rouge</option>
-  <option value="green">Green</option>
-  <option value="blue">Blue</option>
-</select>
-<button (click)="toggleActive()">Toggle</button>
+<h1>Product Management</h1>
+<app-menu></app-menu>
+<app-product-list></app-product-list>
