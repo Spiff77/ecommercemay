@@ -8,6 +8,8 @@ import {Product} from '../model/product.model';
 })
 export class ProductListComponent {
 
+  selectedProduct: Product | undefined
+
   product1: Product = {
     id: 20,
     name: '1984',
@@ -26,4 +28,8 @@ export class ProductListComponent {
     active: true,
     category: 'CD',
   }
+  receiveDataFromChild(p: Product){
+    this.selectedProduct = p
+  }
+
 }

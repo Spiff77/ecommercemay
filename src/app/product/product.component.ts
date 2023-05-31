@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
 import {Product} from '../model/product.model';
 
 @Component({
@@ -11,4 +11,11 @@ export class ProductComponent {
   @Input()
   product: Product | undefined
 
+  @Output()
+  evtEmit = new EventEmitter<Product>()
+
+  @HostListener('click')
+  sendData(){
+    this.evtEmit.emit(this.product)
+  }
 }
