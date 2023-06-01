@@ -1,6 +1,7 @@
 import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
 import {Product} from '../model/product.model';
 import {ProductService} from '../product.service';
+import {ProductHttpService} from '../product-http.service';
 
 @Component({
   selector: 'app-product-list',
@@ -14,10 +15,10 @@ export class ProductListComponent implements OnInit{
 
   products: Product[] = []
 
-  constructor(private ps: ProductService) {}
+  constructor(private ps: ProductHttpService) {}
 
   ngOnInit(): void {
-    this.products = this.ps.findAll()
+    this.ps.findAll().subscribe(v => this.products = v)
   }
 
   receiveDataFromChild(p: Product){
