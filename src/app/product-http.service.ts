@@ -20,4 +20,8 @@ export class ProductHttpService {
   findOne(id: number): Observable<Product> {
     return this.http.get<Product>(this.url+'/'+id)
   }
+
+  remove(id: number): Observable<void> {
+    return this.http.delete<void>(this.url+'/'+id)
+  }
 }

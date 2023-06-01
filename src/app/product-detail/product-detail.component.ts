@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../model/product.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProductHttpService} from '../product-http.service';
 import {Observable} from 'rxjs';
 
@@ -12,9 +12,12 @@ import {Observable} from 'rxjs';
 export class ProductDetailComponent implements OnInit{
 
   currentProduct!:Product;
+  displayDeleteConfirm = false;
 
-  constructor(private activeRoute: ActivatedRoute, private productService: ProductHttpService) {
-  }
+  constructor(private activeRoute: ActivatedRoute,
+              private productService: ProductHttpService,
+              private router: Router
+  ) {}
 
   ngOnInit(): void {
     let id = Number(this.activeRoute.snapshot.paramMap.get('id') ?? -1);
@@ -24,4 +27,7 @@ export class ProductDetailComponent implements OnInit{
     }
   }
 
+  deleteForReal() {
+    this.productService.remove(this.currentProduct.id).subscribe(() => this.router.navigateByUrl('/products'))
+  }
 }
