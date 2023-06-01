@@ -1,48 +1,20 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {Product} from './model/product.model';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private products: Product[] = [
-    {
-      id: 20,
-      name: '1984',
-      description: 'un livre qu\'il est bien pour le lire',
-      price: 10,
-      promo: .3,
-      active: true,
-      category: 'Book',
-    }, {
-      id: 20,
-      name: 'Frank Zappa',
-      description: 'un CD qu\'il est bien pour l\'écouter',
-      price: 10,
-      promo: .3,
-      active: true,
-      category: 'CD',
-    }
-  ]
+  private _notification = new Subject<void>
 
-  findAll(): Product[]{
-    return this.products;
+  get notification(){
+    return this._notification
   }
 
-  add(product: Product){
-    this.products.push(product)
+  sendNotification(): void{
+    this._notification.next()
   }
-
-  findOne(id: number): Product | undefined{
-    return this.products.find(p => p.id === id);
-  }
-
-  delete(id: number): void{
-    let searchElement = this.products.find(p => p.id === id);
-    if(searchElement)
-      this.products.splice(this.products.indexOf(searchElement), 1);
-  }
-
 
 }

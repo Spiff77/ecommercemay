@@ -15,9 +15,14 @@ export class ProductListComponent implements OnInit{
 
   products: Product[] = []
 
-  constructor(private ps: ProductHttpService) {}
+  constructor(private ps: ProductHttpService,private productNotif: ProductService) {}
 
   ngOnInit(): void {
+    this.fetchData();
+    this.productNotif.notification.subscribe( () => this.fetchData())
+  }
+
+  private fetchData() {
     this.ps.findAll().subscribe(v => this.products = v)
   }
 
