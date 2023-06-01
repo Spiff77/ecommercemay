@@ -12,10 +12,12 @@ import {ProductHttpService} from './product-http.service';
 import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'products', component: ProductListComponent},
+  {path: 'products/:id', component: ProductDetailComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent },
 ]
@@ -28,6 +30,7 @@ const routes: Routes = [
     ProductComponent,
     HomeComponent,
     PageNotFoundComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

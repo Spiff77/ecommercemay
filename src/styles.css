@@ -3,3 +3,8 @@ body{
   width:1200px;
   margin: 0 auto;
 }
+.defaultLink{
+  color: royalblue;
+  text-decoration: underline;
+  cursor: pointer;
+}

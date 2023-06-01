@@ -1,7 +1,3 @@
 <h3>{{product?.name}} ({{product?.category}})</h3>
 <p>{{product?.description}}</p>
-
-
-<pre>
-  {{product | json}}
-</pre>
+<span [routerLink]="['/products', product?.id]" class="defaultLink">Afficher le détail</span>
