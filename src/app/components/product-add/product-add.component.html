@@ -1,5 +1,11 @@
 <h2>Add Product</h2>
 
+<ul *ngIf="formSubmitted">
+  <li *ngIf="myForm.get('name')?.errors?.['required']"> Le nom est obligatoire, merci</li>
+  <li *ngIf="myForm.get('description')?.errors?.['required']"> La description est obligatoire, merci</li>
+  <li *ngIf="myForm.get('description')?.errors?.['minlength']"> La description est trop courte, merci</li>
+</ul>
+
 <form [formGroup]="myForm" (ngSubmit)="onSumbit()">
   <div>
     <label for="theName">Name</label>
@@ -10,7 +16,7 @@
     <input type="text" id="theCategory" formControlName="category">
   </div>
   <div>
-    <label for="theDescription">Name</label>
+    <label for="theDescription">Description</label>
     <input type="text" id="theDescription" formControlName="description">
   </div>
   <div>
@@ -24,6 +30,12 @@
   <div>
     <label for="theActive">Active</label>
     <input type="checkbox" id="theActive" formControlName="active">
+  </div>
+  <div formGroupName="supplier">
+    <label for="theSupplier">Supplier</label>
+    <select  id="theSupplier" formControlName="id">
+      <option [value]="s.id" *ngFor="let s of suppliers">{{s.companyName}}</option>
+    </select>
   </div>
   <button>OK</button>
 </form>

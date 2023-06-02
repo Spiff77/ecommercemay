@@ -1,3 +1,5 @@
+import {Supplier} from './supplier.model';
+
 export interface Product {
   id: number,
   name: string,
@@ -6,4 +8,5 @@ export interface Product {
   category: string,
   promo: number,
   price: number,
+  supplier?: Supplier
 }

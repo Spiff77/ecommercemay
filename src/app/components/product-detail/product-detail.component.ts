@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
 })
 export class ProductDetailComponent implements OnInit{
 
-  currentProduct!:Product;
+  currentProduct:Product | undefined;
   displayDeleteConfirm = false;
 
   constructor(private activeRoute: ActivatedRoute,
@@ -28,6 +28,7 @@ export class ProductDetailComponent implements OnInit{
   }
 
   deleteForReal() {
-    this.productService.remove(this.currentProduct.id).subscribe(() => this.router.navigateByUrl('/products'))
+    if(this.currentProduct?.id)
+      this.productService.remove(this.currentProduct.id).subscribe(() => this.router.navigateByUrl('/products'))
   }
 }
