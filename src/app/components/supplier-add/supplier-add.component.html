@@ -1,0 +1,15 @@
+<ul *ngIf="formSubmitted">
+  <li *ngIf="companyFormItem?.errors?.['required']">Company est obligatoire</li>
+</ul>
+
+<form #supplierForm="ngForm" (ngSubmit)="submitForm(supplierForm)">
+  <div>
+    <label for="theCompanyName">Company name</label>
+    <input [(ngModel)]="supplier.companyName" #companyFormItem=ngModel name="companyName" type="text" id="theCompanyName" required>
+  </div>
+  <div>
+    <label for="theBankAccountNumber">Bank account number</label>
+    <input [(ngModel)]="supplier.bankAccountNumber" name="bankAccountNumber" type="text" id="theBankAccountNumber">
+  </div>
+  <button>OK</button>
+</form>

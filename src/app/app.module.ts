@@ -14,11 +14,13 @@ import {RouterModule, Routes} from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
+import { SupplierAddComponent } from './components/supplier-add/supplier-add.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'products', component: ProductListComponent},
   {path: 'products/add', component: ProductAddComponent},
+  {path: 'suppliers/add', component: SupplierAddComponent},
   {path: 'products/edit/:id', component: ProductAddComponent},
   {path: 'products/:id', component: ProductDetailComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -35,9 +37,11 @@ const routes: Routes = [
     PageNotFoundComponent,
     ProductDetailComponent,
     ProductAddComponent,
+    SupplierAddComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
