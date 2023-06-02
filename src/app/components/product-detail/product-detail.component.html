@@ -6,11 +6,7 @@
   <li>{{currentProduct?.price}}</li>
   <li>{{currentProduct?.promo}}</li>
 </ul>
-<div (click)="displayDeleteConfirm = true" class="defaultLink">Supprimer le produit?</div>
-<div *ngIf="displayDeleteConfirm">
-  <span (click)="deleteForReal()" class="defaultLink">Oui</span>&nbsp;
-  <span class="defaultLink" (click)="displayDeleteConfirm = false">Non</span>
-</div>
+<div (click)="openModal()" class="defaultLink">Supprimer le produit?</div>
 
 
 <span routerLink="/products" class="defaultLink">Retour à la liste</span>

@@ -15,6 +15,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { SupplierAddComponent } from './components/supplier-add/supplier-add.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import { DeteleDialogComponent } from './components/detele-dialog/detele-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -38,13 +44,19 @@ const routes: Routes = [
     ProductDetailComponent,
     ProductAddComponent,
     SupplierAddComponent,
+    DeteleDialogComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatDialogModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

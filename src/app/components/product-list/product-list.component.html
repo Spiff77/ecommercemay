@@ -1,5 +1,10 @@
 <h2>Products List</h2>
-<input type="text" (input)="setFilterStr($event)">
+<mat-form-field appearance="outline">
+  <mat-label>Outline form field</mat-label>
+  <input matInput placeholder="Placeholder" (input)="setFilterStr($event)">
+  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  <mat-hint>Hint</mat-hint>
+</mat-form-field>
 <div *ngIf="selectedProduct"> <span (click)="selectedProduct = undefined">[X]</span> Vous avez selectionné: {{selectedProduct.name}} ({{selectedProduct.category}})</div>
 <div *ngIf="getProductsFiltered().length == 0">La liste est vide</div>
 <app-product *ngFor="let prod of getProductsFiltered()" (evtEmit)="receiveDataFromChild($event)" [product]="prod"></app-product>
