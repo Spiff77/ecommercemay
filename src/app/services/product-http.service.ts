@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Product} from './model/product.model';
-import {environment as env} from '../environments/environment'
+import {Product} from '../model/product.model';
+import {environment as env} from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,9 @@ export class ProductHttpService {
 
   remove(id: number): Observable<void> {
     return this.http.delete<void>(this.url+'/'+id)
+  }
+
+  add(product:Product): Observable<void> {
+    return this.http.post<void>(this.url, product)
   }
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from '../model/product.model';
+import {Product} from '../../model/product.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductHttpService} from '../product-http.service';
+import {ProductHttpService} from '../../services/product-http.service';
 import {Observable} from 'rxjs';
 
 @Component({

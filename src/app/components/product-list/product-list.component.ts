@@ -1,7 +1,7 @@
 import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
-import {Product} from '../model/product.model';
-import {ProductService} from '../product.service';
-import {ProductHttpService} from '../product-http.service';
+import {Product} from '../../model/product.model';
+import {ProductService} from '../../services/product.service';
+import {ProductHttpService} from '../../services/product-http.service';
 
 @Component({
   selector: 'app-product-list',

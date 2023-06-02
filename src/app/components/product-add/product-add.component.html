@@ -1,0 +1,32 @@
+<h2>Add Product</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSumbit()">
+  <div>
+    <label for="theName">Name</label>
+    <input type="text" id="theName" formControlName="name">
+  </div>
+  <div>
+    <label for="theCategory">Category</label>
+    <input type="text" id="theCategory" formControlName="category">
+  </div>
+  <div>
+    <label for="theDescription">Name</label>
+    <input type="text" id="theDescription" formControlName="description">
+  </div>
+  <div>
+    <label for="thePrice">Price</label>
+    <input type="text" id="thePrice" formControlName="price">
+  </div>
+  <div>
+    <label for="thePromo">Promo</label>
+    <input type="text" id="thePromo" formControlName="promo">
+  </div>
+  <div>
+    <label for="theActive">Active</label>
+    <input type="checkbox" id="theActive" formControlName="active">
+  </div>
+  <button>OK</button>
+</form>
+<pre>
+  {{myForm.value| json}}
+</pre>

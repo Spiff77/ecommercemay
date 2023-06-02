@@ -1,5 +1,5 @@
 import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
-import {Product} from '../model/product.model';
+import {Product} from '../../model/product.model';
 import {Router} from '@angular/router';
 
 @Component({
